@@ -24,15 +24,21 @@ variables:
 
   # Python version: 3.7
   pythonVersion: '3.7'
+  
 
 stages:
+
 - stage: Build
   displayName: Build stage
   jobs:
+  
   - job: BuildJob
     pool:
       vmImage: $(vmImageName)
     steps:
+    
+    - script: conda env create --quiet --file environment.yml
+ 
     - task: UsePythonVersion@0
       inputs:
         versionSpec: '$(pythonVersion)'
